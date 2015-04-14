@@ -1,9 +1,14 @@
-\documentclass{article}
+\documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
 \usepackage{amsmath}
+\geometry{hmargin={1cm,1cm},vmargin=1.2cm}
 \title{Résistance des matériaux}
 \begin{document}
-	\section*{Torseurs d'effort interne}
+	\begin{center}
+		\huge{RDM}
+	\end{center}
+	\subsection*{Torseurs d'effort interne}
 	$$ \left\lbrace T_{coh}\right\rbrace _G=\left\lbrace T_{\delta^+/\delta^-}\right\rbrace=\left\lbrace\begin{array}{c}
 		\overrightarrow{R}\\ \overrightarrow{\textrm{M}_{\delta^+/\delta^-}}(G)
 		\end{array}\right\rbrace \quad  avec \quad \overrightarrow{R} = \left\lbrace \begin{array}{c}
@@ -11,11 +16,92 @@
 	\end{array} \right\rbrace \quad et \quad \overrightarrow{M} = \left\lbrace \begin{array}{c}
 	M_{torsion} \\ M_{flexion_y} \\  M_{flexion_z}
 	\end{array} \right\rbrace $$
-	\section*{Conventions}
+	\subsection*{Conventions}
 	$$ \text{Normal : } \vec{\sigma}(P,\vec{x}) \text{ en Pa} \qquad \text{Tangentielle : } \qquad \text{Longueur : } \epsilon \qquad \text{Angle : } \gamma \text{(radiants)} $$
-	\section*{Traction/Compression}
+	\subsection*{Traction/Compression}
 	$$ \left\lbrace T_{coh}\right\rbrace_G = \left\lbrace \begin{array}{ccc}
 	N_x & 0 & 0\\ 0& 0& 0
-	\end{array} \right\rbrace \quad N>0 \Leftrightarrow \text{Traction, sinon compression} $$
-	$$ \text{Contrainte : } \sigma = \dfrac{F}{S}=\dfrac{N_x}{S}, \quad \text{Résistance à la traction : } \sigma<\sigma_e=R_e \quad R_e \text{ est la résistance élastique}$$
+	\end{array} \right\rbrace \quad N>0 \Leftrightarrow \text{Traction, sinon compression}
+	\qquad
+	\textbf{Contrainte : } \sigma = \dfrac{F}{S}=\dfrac{N_x}{S} $$
+	$$
+	 \quad \textbf{Résistance à la traction : } \sigma<\sigma_e=R_e \quad R_e \text{ est la résistance élastique}, \quad 
+	 S \text{ : coef de sécurité et } \sigma < \frac{\sigma_e}{S} $$
+	$$  \qquad\quad \textbf{Loi de Hook : } \sigma = \overbrace{E}^\text{Module de Young}\times\underbrace{\epsilon}_\text{allongement}$$
+	
+	\subsection*{Cisaillement Simple}
+	$$ \left\lbrace T_{coh}\right\rbrace_G = \left\lbrace \begin{array}{ccc}
+	0 & T_y & T_z\\ 0& 0& 0
+	\end{array} \right\rbrace
+	\qquad
+	\textbf{Contrainte : } \tau = \dfrac{F}{S} \quad;\qquad \tau_e=\xi \sigma_e $$
+	$$ \xi \text{ : Constante du matériau}
+	\qquad \textbf{Résistance au cisaillement : } \tau<\tau_e \qquad 
+	S \text{ : coef de sécurité et } \tau < \frac{\tau_e}{S} $$
+	$$ \textbf{Déformation angulaire : } \tau = G\gamma \quad \text{avec} \quad G \text{ : Module de coulomb} \quad \text{et} \quad \gamma \text{ : Déviation}$$
+	
+	\subsection*{Torsion}
+	$$ \left\lbrace T_{coh}\right\rbrace_G = \left\lbrace \begin{array}{ccc}
+	0 & 0 & 0\\ M_t& 0& 0
+	\end{array} \right\rbrace
+	\qquad
+	\textbf{Contrainte : } \tau = \dfrac{M_t\rho}{I_0} \quad;\quad \rho \text{ : Rayon considéré} \quad ; \qquad R \text{ : Rayon réel} $$
+	$$ I_0 \text{ : Moment quadratique polaire } ;\quad I_0=\int \rho^2 dS\quad;\quad \text{NB : } \tau \text{ est maxi en périphérie}$$
+	$$ 
+	\tau(R)=\tau_\text{max} \quad \text{et} \quad \tau(\rho)=\tau_\text{max}\frac{\rho}{R} 
+	\qquad \textbf{Equation d'équilibre : } -C+M_t=0 \text{ avec } M_t = \int \rho \tau dS
+	$$
+	$$
+	\textbf{Résistance : } \tau_\text{max} < R_{PG}=\frac{\tau_e}{S}=\frac{\xi\sigma_e}{S}
+	\quad \Rightarrow \quad M_t<\frac{\xi\sigma_eI_g}{SR}
+	$$
+	$$
+	\textbf{Déformation angulaire : } \theta = \frac{\gamma}{l} \quad ; \quad \tau=G\gamma \Rightarrow \gamma = \frac{M_tR}{GI_0} \Leftrightarrow \theta=\frac{M_t}{GI_0}\Leftrightarrow\theta=\frac{\delta}{\delta x} \quad ; \quad \alpha = \theta L
+	$$
+	
+	\subsection*{Flexion Pure}
+	$$
+	\left\lbrace T_{coh}\right\rbrace_G = \left\lbrace \begin{array}{ccc}
+	0 & 0 & 0\\ 0& 0& M_{f_z}
+	\end{array} \right\rbrace
+	\qquad
+	\textbf{Contrainte : } \tau = \dfrac{M_{f_z}\rho}{I_Z} \quad;\quad \rho \text{ : Rayon considéré} \quad ; \qquad R \text{ : Rayon réel}
+	$$
+	$$
+	I_{f_z}=\int \rho^2 dS \qquad
+	\sigma_\text{max} = \frac{\left|M_{f_z}\right|V}{I_Z} \qquad
+	\textbf{Résistance : } \sigma_\text{max}<\frac{R_e}{S}
+	$$
+	$$
+	\textbf{Equation de la poutre : }y=f(x)\quad y''=\frac{M_{f_z}}{E_XI_Z}
+	$$
+	
+	\subsection*{Flexion Simple}
+	$$
+	\left\lbrace T_{coh}\right\rbrace_G = \left\lbrace \begin{array}{ccc}
+	0 & T_Y & 0\\ 0& 0& M_{f_z}
+	\end{array} \right\rbrace
+	\qquad
+	\text{On considère que le cisaillement est en réalité négligeable}
+	$$
+	
+	\subsection*{Sollicitations composées}
+	$$
+	\vec{\sigma}=\vec{\sigma_1}+\vec{\sigma_2}\qquad
+	\vec{\tau}=\vec{\tau1}+\vec{\tau_2}\qquad
+	\textbf{Von Mises : } \sigma_{eq} = \sqrt{\sigma^2+\xi\tau^2} \qquad
+	\sigma_{eq}<R_e
+	$$
+	
+	\subsection*{Moments Quadratiques}
+	$$
+	\textbf{Section rectangulaire : } I_Z=\frac{\left(cote\right)\times\left(hauteur\right) ^2}{12} \qquad
+	\textbf{Section circulaire : } I_Z = \frac{\pi\left(diametre\right) ^2}{64}
+	$$
+	$$
+	\textbf{Tube rectangulaire : } I_Z=\frac{(\text{(coté extérieur)(hauteur extérieur)})^3-(\text{(coté intérieur)(hauteur intérieur)})^3}{12} 
+	$$
+	$$
+	\textbf{Section circulaire : } I_Z = \frac{\pi(\left(\text{diamètre intérieur}\right) ^4-(\text{diamètre intérieur})^4)}{64}
+	$$
 \end{document}
